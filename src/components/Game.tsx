@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Menu, X } from 'lucide-react'; // Or any icon from lucide/react-icons
+
 import { GameChoiceOption } from '../types/gameTypes';
 import { GAME_CHOICES, INITIAL_SCORE } from '../constants/gameConstants';
 import { ChoiceButton } from './ChoiceButton';
@@ -13,6 +15,8 @@ export const Game = () => {
   const [houseChoice, setHouseChoice] = useState<GameChoiceOption | null>(null);
   const [gameResult, setGameResult] = useState<'win' | 'lose' | 'draw' | null>(null);
   const [isBonusMode, setIsBonusMode] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
 
   const choices = isBonusMode 
     ? Object.values(GAME_CHOICES) 
@@ -51,23 +55,57 @@ export const Game = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-[hsl(214,47%,23%)] to-[hsl(237,49%,15%)] py-8 px-4">
   <div className="max-w-3xl mx-auto">
-    <div className="flex justify-between items-center mb-16 border-1 border-[hsl(217,16%,45%)] p-4 rounded-lg">
-      <div className="flex items-center">
+ <div className="mb-8 border border-[hsl(217,16%,45%)] rounded-lg p-4">
+      {/* Desktop View */}
+      <div className="hidden md:flex justify-between items-center">
+        <div className="flex items-center">
+          <Image 
+            src={isBonusMode ? "/images/logo-bonus.svg" : "/images/logo.svg"} 
+            alt="Rock Paper Scissors"
+            width={isBonusMode ? 115 : 162}
+            height={isBonusMode ? 114 : 99}
+            className="mr-4"
+          />
+          <button
+            onClick={toggleGameMode}
+            className="bg-white text-[hsl(229,25%,31%)] py-1 px-3 rounded text-sm font-bold"
+          >
+            {isBonusMode ? 'Standard' : 'Bonus'}
+          </button>
+        </div>
+        <ScoreDisplay score={score} />
+      </div>
+
+      {/* Mobile View */}
+      <div className="flex md:hidden justify-between items-center">
         <Image 
           src={isBonusMode ? "/images/logo-bonus.svg" : "/images/logo.svg"} 
           alt="Rock Paper Scissors"
-          width={isBonusMode ? 115 : 162}
-          height={isBonusMode ? 114 : 99}
-          className="mr-4"
+          width={100}
+          height={100}
         />
-        <button
-          onClick={toggleGameMode}
-          className="bg-white text-[hsl(229,25%,31%)] py-1 px-3 rounded text-sm font-bold"
-        >
-          {isBonusMode ? 'Standard' : 'Bonus'}
+        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white">
+          {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
-      <ScoreDisplay score={score} />
+
+      {/* Mobile Menu Content */}
+      {isMenuOpen && (
+        <div className="md:hidden mt-4 space-y-4 flex flex-col justify-center items-center text-center">
+          <button
+            onClick={() => {
+              toggleGameMode();
+              setIsMenuOpen(false);
+            }}
+            className="w-fit bg-white text-[hsl(229,25%,31%)] p-2 rounded font-bold"
+          >
+            {isBonusMode ? 'Switch to Standard' : 'Switch to Bonus'}
+          </button>
+          <div className="w-fit bg-white rounded p-2 text-[hsl(229,25%,31%)] font-bold">
+            Score: {score}
+          </div>
+        </div>
+      )}
     </div>
 
     {!userChoice ? (
@@ -82,7 +120,7 @@ export const Game = () => {
               className="absolute inset-0 m-auto"
             />
             {/* Scissors - Top */}
-            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="absolute top-7 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
               <ChoiceButton 
                 choice={GAME_CHOICES.scissors} 
                 onClick={() => handleChoice(GAME_CHOICES.scissors)} 
