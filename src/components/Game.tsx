@@ -3,7 +3,7 @@ import { GameChoiceOption } from '../types/gameTypes';
 import { GAME_CHOICES, INITIAL_SCORE } from '../constants/gameConstants';
 import { ChoiceButton } from './ChoiceButton';
 import { ScoreDisplay } from './ScoreDisplay';
-import { ResultModal } from './ResultModal';
+// import { ResultModal } from './ResultModal';
 import { RulesModal } from './RulesModal';
 import Image from 'next/image';
 
@@ -175,7 +175,7 @@ export const Game = () => {
       <div className="flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="text-center">
           <p className="font-semibold mb-4 text-white">YOU PICKED</p>
-          <ChoiceButton choice={userChoice} size="lg" disabled />
+          <ChoiceButton choice={userChoice} size="lg" disabled onClick={() => {}} />
         </div>
         
         {gameResult && (
