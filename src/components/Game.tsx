@@ -18,6 +18,8 @@ export const Game = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
 
+    console.log( houseChoice, userChoice, gameResult);
+
   const choices = isBonusMode 
     ? Object.values(GAME_CHOICES) 
     : [GAME_CHOICES.rock, GAME_CHOICES.paper, GAME_CHOICES.scissors];
@@ -214,7 +216,11 @@ export const Game = () => {
       <div className="flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="text-center">
           <p className="font-semibold mb-4 text-white">YOU PICKED</p>
-          <ChoiceButton choice={userChoice} size="lg" disabled onClick={() => {}} />
+          <div className={`rounded-full p-4
+ ${userChoice && houseChoice && userChoice.name === houseChoice.name ? "ripple-fade" : ""} ${userChoice && houseChoice && userChoice.beats.includes(houseChoice.id) ? "ripple-fade" : ""}`}>
+
+          <ChoiceButton  choice={userChoice} size="lg" disabled onClick={() => {}} />
+          </div>
         </div>
         
         {gameResult && (
@@ -238,7 +244,10 @@ export const Game = () => {
         <div className="flex flex-col items-center justify-center text-center">
           <p className="font-semibold mb-4 text-white">THE HOUSE PICKED</p>
           {houseChoice ? (
+             <div className={`rounded-full p-4
+  ${userChoice?.name == houseChoice?.name ?"ripple-fade":""} ${houseChoice?.beats.includes(userChoice?.id)? "ripple-fade":""}`} >
             <ChoiceButton choice={houseChoice} size="lg" disabled onClick={() => {}} />
+                </div>
           ) : (
             <div className="w-40 h-40 rounded-full bg-[hsl(237,49%,15%)] flex items-center justify-center">
               <p className="text-white">...</p>

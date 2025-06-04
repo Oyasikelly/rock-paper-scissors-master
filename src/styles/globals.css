@@ -1,50 +1,26 @@
 @import "tailwindcss";
 
-/* choices.css */
-@media (max-width: 639px) {
-  .triangle-scissors {
-    top: 1rem;
-    right: 20%;
-    transform: translate(1rem, 1rem);
+
+
+
+
+@keyframes rippleFade {
+  0% {
+    opacity: 0.6;
+    transform: scale(1);
   }
-  .triangle-paper {
-    bottom: 0;
-    left: 18%;
-    transform: translateY(-16rem);
-  }
-  .triangle-rock {
-    bottom: 0;
-    right: 40%;
-    transform: translateY(0.5rem);
+  100% {
+    opacity: 0;
+    transform: scale(2);
   }
 }
 
-@media (min-width: 640px) and (max-width: 1023px) {
-  .triangle-scissors {
-    right: 25%;
-    transform: translate(2rem, -1rem);
-  }
-  .triangle-paper {
-    left: 13%;
-    transform: translateY(-17rem);
-  }
-  .triangle-rock {
-    right: 41%;
-    transform: translateY(4rem);
-  }
+.ripple-fade {
+  /* position: absolute; */
+  border-radius: 50%;
+  width: 100px;         /* Adjust width */
+  height: 100px;        /* Adjust height */
+  animation: rippleFade 2s linear infinite;
+  pointer-events: none;
 }
 
-@media (min-width: 1024px) {
-  .triangle-scissors {
-    right: 30%;
-    transform: translate(2.5rem, -1rem);
-  }
-  .triangle-paper {
-    left: 10%;
-    transform: translateY(-6rem);
-  }
-  .triangle-rock {
-    right: 39%;
-    transform: translateY(6rem);
-  }
-}
