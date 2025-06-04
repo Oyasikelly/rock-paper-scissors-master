@@ -112,100 +112,101 @@ export const Game = () => {
       <div className="relative flex justify-center items-center h-96">
         {isBonusMode ? (
           <>
-            <Image
-              src="/images/bg-pentagon.svg"
-              alt="Pentagon Background"
-              width={329}
-              height={313}
-              className="absolute inset-0 m-auto"
-            />
-            {/* Scissors - Top */}
-            <div className="absolute top-7 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
-              <ChoiceButton 
-                choice={GAME_CHOICES.scissors} 
-                onClick={() => handleChoice(GAME_CHOICES.scissors)} 
-                size="lg"
-              />
-            </div>
-            {/* rock - Top Right */}
-            <div className="absolute top-[80%] right-[23%]">
-              <ChoiceButton 
-                choice={GAME_CHOICES.rock} 
-                onClick={() => handleChoice(GAME_CHOICES.rock)} 
-                size="lg"
-              />
-            </div>
-            {/* Paper - Bottom Right */}
-            <div className="absolute bottom-[35%] right-[12%]">
-              <ChoiceButton 
-                choice={GAME_CHOICES.paper} 
-                onClick={() => handleChoice(GAME_CHOICES.paper)} 
-                size="lg"
-              />
-            </div>
-            {/* spock - Bottom Left */}
-            <div className="absolute bottom-[35%] left-[12%]">
-              <ChoiceButton 
-                choice={GAME_CHOICES.spock} 
-                onClick={() => handleChoice(GAME_CHOICES.spock)} 
-                size="lg"
-              />
-            </div>
-            {/* lizard - Top Left */}
-            <div className="absolute top-[80%] left-[23%]">
-              <ChoiceButton 
-                choice={GAME_CHOICES.lizard} 
-                onClick={() => handleChoice(GAME_CHOICES.lizard)} 
-                size="lg"
-              />
-            </div>
+           {/* Pentagon Background */}
+<Image
+  src="/images/bg-pentagon.svg"
+  alt="Pentagon Background"
+  width={329}
+  height={313}
+  className="absolute inset-0 m-auto"
+/>
+
+{/* Scissors - Top */}
+<div className="
+  absolute top-[4%] left-1/2 transform -translate-x-1/2
+  md:top-[2%]
+  lg:top-[1%]
+">
+  <ChoiceButton choice={GAME_CHOICES.scissors} onClick={() => handleChoice(GAME_CHOICES.scissors)} size="lg" />
+</div>
+
+{/* Spock - Top Left */}
+<div className="
+  absolute top-[28%] left-[5%]
+  md:top-[25%] md:left-[18%]
+  lg:top-[22%] lg:left-[10%]
+">
+  <ChoiceButton choice={GAME_CHOICES.spock} onClick={() => handleChoice(GAME_CHOICES.spock)} size="lg" />
+</div>
+
+{/* Paper - Bottom Left */}
+<div className="
+  absolute bottom-[8%] left-[15%]
+  md:-bottom-[10%] md:left-[28%]
+  lg:-bottom-[18%] lg:left-[19%]
+">
+  <ChoiceButton choice={GAME_CHOICES.paper} onClick={() => handleChoice(GAME_CHOICES.paper)} size="lg" />
+</div>
+
+{/* Lizard - Bottom Right */}
+<div className="
+  absolute bottom-[8%] right-[15%]
+  md:-bottom-[10%] md:right-[28%]
+  lg:-bottom-[18%] lg:right-[19%]
+">
+  <ChoiceButton choice={GAME_CHOICES.lizard} onClick={() => handleChoice(GAME_CHOICES.lizard)} size="lg" />
+</div>
+
+{/* Rock - Top Right */}
+<div className="
+  absolute top-[28%] right-[5%]
+  md:top-[25%] md:right-[18%]
+  lg:top-[22%] lg:right-[10%]
+">
+  <ChoiceButton choice={GAME_CHOICES.rock} onClick={() => handleChoice(GAME_CHOICES.rock)} size="lg" />
+</div>
           </>
         ) : (
           <>
-            <Image
-              src="/images/bg-triangle.svg"
-              alt="Triangle Background"
-              width={313}
-              height={278}
-              className="absolute inset-0 m-auto"
-            />
-            {/* Scissors - Top */}
-            <div className="absolute top-0 right-[23%] transform translate-x-[2.3rem] translate-y-[1rem]
-            lg:right-[30%] lg:translate-x-1/1 lg:-translate-y-[1rem]
-            md:right-[25%] md:translate-x-2/3 md:-translate-y-[1rem]
-            ">
-              <ChoiceButton 
-                choice={GAME_CHOICES.scissors} 
-                onClick={() => handleChoice(GAME_CHOICES.scissors)} 
-                size="lg"
-              />
-            </div>
-         
-            {/* Paper - Bottom Right */}
-            <div className="absolute bottom-0 lg:left-[10%] transform lg:-translate-y-3/2
-            md:left-[13%] md:-translate-y-[17rem]
-            left-[18%] -translate-y-[18rem]
-            ">
 
-              <ChoiceButton 
-                choice={GAME_CHOICES.paper} 
-                onClick={() => handleChoice(GAME_CHOICES.paper)} 
-                size="lg"
-              />
-            </div>
+           {/* Triangle Background */}
 
-               {/* Rock - Bottom Left */}
-            <div className="absolute bottom-0  lg:right-[39%] transform lg:translate-y-[6rem]
-            md:right-[41%] md:translate-y-[4rem]
-            right-[40%] translate-y-[0.6rem] 
-            ">
+<Image
+  src="/images/bg-triangle.svg"
+  alt="Triangle Background"
+  width={313}
+  height={278}
+  className="absolute inset-0 m-auto"
+/>
 
-              <ChoiceButton 
-                choice={GAME_CHOICES.rock} 
-                onClick={() => handleChoice(GAME_CHOICES.rock)} 
-                size="lg"
-              />
-            </div>
+{/* Scissors - Top */}
+<div className="
+  absolute top-4 right-[10%]
+  transform translate-x-4 translate-y-4
+  md:right-[20%] md:translate-x-6 md:translate-y-2
+  lg:right-[17%] lg:translate-x-8 lg:-translate-y-4
+">
+  <ChoiceButton choice={GAME_CHOICES.scissors} onClick={() => handleChoice(GAME_CHOICES.scissors)} size="lg" />
+</div>
+
+{/* Paper - Bottom Left */}
+<div className="
+  absolute bottom-0 left-[5%] -translate-y-68
+  md:left-[15%] md:-translate-y-[15rem]
+  lg:left-[12%] lg:-translate-y-55
+">
+  <ChoiceButton choice={GAME_CHOICES.paper} onClick={() => handleChoice(GAME_CHOICES.paper)} size="lg" />
+</div>
+
+{/* Rock - Bottom Right */}
+<div className="
+  absolute bottom-0 right-[38%] translate-y-2
+  md:right-[41%] md:translate-y-12
+  lg:right-[39%] lg:translate-y-19
+">
+  <ChoiceButton choice={GAME_CHOICES.rock} onClick={() => handleChoice(GAME_CHOICES.rock)} size="lg" />
+</div>
+
           </>
         )}
       </div>
