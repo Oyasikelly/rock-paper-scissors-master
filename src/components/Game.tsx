@@ -31,10 +31,10 @@ export const Game = () => {
       
       if (choice.beats.includes(randomChoice.id)) {
         setGameResult('win');
-        setScore(prev => prev + 1);
+        setScore(prev => prev + 4);
       } else if (randomChoice.beats.includes(choice.id)) {
         setGameResult('lose');
-        setScore(prev => Math.max(0, prev - 1));
+        setScore(prev => Math.max(0, prev - 2));
       } else {
         setGameResult('draw');
       }
@@ -235,7 +235,7 @@ export const Game = () => {
           </div>
         )}
         
-        <div className="text-center">
+        <div className="flex flex-col items-center justify-center text-center">
           <p className="font-semibold mb-4 text-white">THE HOUSE PICKED</p>
           {houseChoice ? (
             <ChoiceButton choice={houseChoice} size="lg" disabled onClick={() => {}} />
